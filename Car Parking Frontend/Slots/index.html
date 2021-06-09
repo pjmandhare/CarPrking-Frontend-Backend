@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../bootstrap/bootstrap.min.css" rel="stylesheet" />
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/floating-labels/" />
+  <link href="./style.css" rel="stylesheet" />
+
+  <title>Time Screen</title>
+  <script>
+    function handleLogout() {
+      localStorage.clear()
+    }
+
+    // api for get remainging time
+    function getRemaningTime() {
+      var token = localStorage.getItem("user_token")
+
+      fetch('https://car-parked-app.herokuapp.com/api/slots/get-slots', {
+        method: 'get',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+          token,
+        },
+
+      }).then(res => res.json().then(ress => {
+        console.log(ress, 'ressss')
+        if (ress.slots) {
+          ress.slots.map(val => {
+            console.log(val, 'valval')
+            switch (val.slotName) {
+              case "A":
+                 val.vaccant =='true' ? document.getElementById('slota').innerText = "Vacant" : document.getElementById('slota').innerText = "Booked"
+                 val.vaccant =='true' ? null : document.getElementById("slota").disabled = true
+
+                break;
+              case "B":
+                 val.vaccant =='true' ? document.getElementById('slotb').innerText = "Vacant" : document.getElementById('slotb').innerText = "Booked"
+                 val.vaccant =='true' ? null : document.getElementById("slotb").disabled = true
+
+                break;
+              case "C":
+                 val.vaccant =='true' ? document.getElementById('slotc').innerText = "Vacant" : document.getElementById('slotc').innerText = "Booked"
+                 val.vaccant =='true' ? null : document.getElementById("slotc").disabled = true
+                break;
+              case "D":
+                 val.vaccant =='true' ? document.getElementById('slotd').innerText = "Vacant" : document.getElementById('slotd').innerText = "Booked"
+                 val.vaccant =='true' ? null : document.getElementById("slotd").disabled = true
+                break;
+              case "E":
+                 val.vaccant =='true' =='true' ? document.getElementById('slote').innerText = "Vacant" :
+                  document.getElementById('slote').innerText = "Booked"
+                 val.vaccant =='true' ? null : document.getElementById("slote").disabled = true
+                break;
+              case "F":
+                 val.vaccant =='true' ? document.getElementById('slotf').innerText = "Vacant" : document.getElementById('slotf').innerText = "Booked"
+                 val.vaccant =='true' ? null : document.getElementById("slotf").disabled = true
+                break;
+              case "G":
+                 val.vaccant =='true' ? document.getElementById('slotg').innerText = "Vacant" : document.getElementById('slotg').innerText = "Booked"
+                 val.vaccant =='true' ? null : document.getElementById("slotg").disabled = true
+                break;
+              case "H":
+                 val.vaccant =='true' ? document.getElementById('slotH').innerText = "Vacant" : document.getElementById('slotH').innerText = "Booked"
+                 val.vaccant =='true' ? null : document.getElementById("slotH").disabled = true
+                break;
+              case "I":
+                 val.vaccant =='true' ? document.getElementById('slotI').innerText = "Vacant" : document.getElementById('slotI').innerText = "Booked"
+                 val.vaccant =='true' ? null : document.getElementById("slotI").disabled = true
+                break;
+              case "J":
+                 val.vaccant =='true' ? document.getElementById('slotj').innerText = "Vacant" :
+                  document.getElementById('slotj').innerText = "Booked"
+                 val.vaccant =='true' ? null : document.getElementById("slotj").disabled = true
+                break;
+              default:
+                break;
+            }
+
+          })
+        }
+      })
+      ).catch(err => console.log(err, 'err'))
+    }
+    getRemaningTime()
+
+
+  </script>
+</head>
+
+<body style="background-color: #f7f7fb">
+  <header>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light" style="margin: 0 100px">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+          aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- <a class="navbar-brand" href="#">
+              <img src="assets/app-logo.svg" width="100%" height="100%" />
+            </a> -->
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mt-2 mt-lg-0" style="width: 100%; justify-content: flex-end">
+            <li class="nav-item">
+              <a class="nav-link" href="../Home/index.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../About/About.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../Contact/contact.html">Contact</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav mt-2 mt-lg-0 ml-1">
+            <li class="nav-item">
+              <a onclick="handleLogout()" href="../Login/login.html"><button class="signup-btn">Logout</button></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div>
+    <h1 style="margin-left: 20px; padding-top: 10px">Zone A</h1>
+
+    <div class="card-columns" style="padding: 30px 0; margin: 10px">
+      <div class="card car-slots">
+        <div class="card-body">
+          <h5 class="card-title">Slot A</h5>
+        </div>
+        <div>
+          <button onclick="handleSlot(event)" type="button" class="sendBtn btn-block" id="slota">
+            Open Curtain
+          </button>
+        </div>
+      </div>
+      <div class="card car-slots">
+        <div class="card-body">
+          <h5 class="card-title">Slot B</h5>
+        </div>
+        <div>
+          <button type="button" onclick="handleSlot(event)" class="sendBtn btn-block" id="slotb">Book</button>
+        </div>
+      </div>
+      <div class="card car-slots">
+        <div class="card-body">
+          <h5 class="card-title">Slot C</h5>
+        </div>
+        <div>
+          <button type="button" onclick="handleSlot(event)" class="sendBtn btn-block" id="slotc">Book</button>
+        </div>
+      </div>
+      <div class="card car-slots">
+        <div class="card-body">
+          <h5 class="card-title">Slot D</h5>
+        </div>
+        <div>
+          <button type="button" onclick="handleSlot(event)" class="sendBtn btn-block" id="slotd">Book</button>
+        </div>
+      </div>
+      <div class="card car-slots">
+        <div class="card-body">
+          <h5 class="card-title">Slot E</h5>
+        </div>
+        <div>
+          <button type="button" onclick="handleSlot(event)" class="sendBtn btn-block" id="slote">Book</button>
+        </div>
+      </div>
+      <div class="card car-slots">
+        <div class="card-body">
+          <h5 class="card-title">Slot F</h5>
+        </div>
+        <div>
+          <button type="button" onclick="handleSlot(event)" class="sendBtn btn-block" id="slotf">Book</button>
+        </div>
+      </div>
+      <div class="card car-slots">
+        <div class="card-body">
+          <h5 class="card-title">Slot G</h5>
+        </div>
+        <div>
+          <button type="button" onclick="handleSlot(event)" class="sendBtn btn-block" id="slotg">Book</button>
+        </div>
+      </div>
+      <div class="card car-slots">
+        <div class="card-body">
+          <h5 class="card-title">Slot H</h5>
+          </div>
+        <div>
+          <button type="button" onclick="handleSlot(event)" class="sendBtn btn-block" id="slotH">
+            Open Curtain
+          </button>
+        </div>
+      </div>
+      <div class="card car-slots">
+        <div class="card-body">
+          <h5 class="card-title">Slot I</h5>
+          </div>
+        <div>
+          <button type="button" onclick="handleSlot(event)" class="sendBtn btn-block" id="slotI">Book</button>
+        </div>
+      </div>
+      <div class="card car-slots">
+        <div class="card-body">
+          <h5 class="card-title">Slot J</h5>
+          </div>
+        <div>
+          <button type="button" onclick="handleSlot(event)" class="sendBtn btn-block" id="slotj">Book</button>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="width: 100%; display: flex; justify-content: space-between">
+      <div class="card-rows card-rowww">
+        
+      </div>
+      <div class="card-rows card-rowww">
+        <div class="card car-slots">
+          <div class="card-body">
+            <h5 class="card-title">Park Your Car</h5>
+            <p style="margin-left: -154px;
+            font-size: 21px;
+            margin-top: 7px;">Hours:</p>
+            <input type='text' placeholder="hours" style="width:64%" id='hours' name="hours" />
+            <p style="margin-left: -154px;
+            font-size: 21px;
+            margin-top: 7px;">Minutes:</p>
+            <input type='text' placeholder="minutes" style="width:64%" id='minutes' name="minutes" />
+            <p style="margin-left: -89px;
+            font-size: 21px;
+            margin-top: 7px;">SelectedSlot: <span id="selectedSLot"></span></p>
+            <!-- <input type='submit'  placeholder="minutes"  style="margin-top: 10px;"  id='minuts'/> -->
+          </div>
+          <div>
+            <button type="button" onclick="callApi()" class="sendBtn btn-block" id="slotp">
+              Save
+            </button>
+          </div>
+        </div>
+        <script>
+          let selectedSlot = null
+          //  function for selecting slot
+          function handleSlot(event) {
+            switch (event.target.id) {
+              case "slota":
+                selectedSlot = 'A'
+                document.getElementById('selectedSLot').innerText = "A"
+                break;
+              case "slotb":
+                selectedSlot = 'B'
+                document.getElementById('selectedSLot').innerText = "B"
+
+                break;
+              case "slotc":
+                selectedSlot = 'C'
+                document.getElementById('selectedSLot').innerText = "C"
+
+                break;
+              case "slotd":
+                selectedSlot = 'D'
+                document.getElementById('selectedSLot').innerText = "D"
+
+                break;
+              case "slote":
+                selectedSlot = 'E'
+                document.getElementById('selectedSLot').innerText = "E"
+
+                break;
+              case "slotf":
+                selectedSlot = 'F'
+                document.getElementById('selectedSLot').innerText = "F"
+
+                break;
+              case "slotg":
+                selectedSlot = 'G'
+                document.getElementById('selectedSLot').innerText = "G"
+
+                break;
+              case "slotH":
+                selectedSlot = 'H'
+                document.getElementById('selectedSLot').innerText = "H"
+
+                break;
+              case "slotI":
+                selectedSlot = 'I'
+                document.getElementById('selectedSLot').innerText = "I"
+
+                break;
+              case "slotj":
+                selectedSlot = 'J'
+                document.getElementById('selectedSLot').innerText = "J"
+
+                break;
+              default:
+                break;
+            }
+          }
+          function callApi() {
+
+            // function for get user current location 
+            let resasdasd = document.getElementById("mapholder");
+            var hours = document.getElementById("hours").value;
+            var minutes = document.getElementById("minutes").value;
+            if (minutes > 59) {
+              alert("minutes must be less than 60");
+              return
+            }
+            if (minutes <= 10) {
+              alert("minutes must be greater than 10");
+              return
+            }
+            if (selectedSlot == null) {
+              alert("Please select sloct");
+              return
+            }
+            else {
+
+              let location = localStorage.getItem('latLong')
+              let JsonOBJ = JSON.parse(location)
+              let params = {
+                duration: `${hours}:${minutes}`,
+                latitude: JsonOBJ.lat,
+                longitude: JsonOBJ.lng,
+                slotName: selectedSlot
+              };
+              let userToken = localStorage.getItem('user_token')
+              fetch("https://car-parked-app.herokuapp.com/api/location/create", {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                  token: userToken
+                },
+                body: JSON.stringify(params),
+              })
+                .then((res) => {
+                  console.log(res, "rRRRRRRRRRRRR");
+                  document.getElementById("hours").value = '';
+                  document.getElementById("minutes").value = '';
+                  document.getElementById("alert").style.display = "block";
+                  document.getElementById("alert").innerHTML = "Slot Booked!!! Time and Location added Succesfully";
+                  setTimeout(() => {
+                    document.getElementById("alert").style.display = "none";
+                    window.location = "../Payment/Payment.html"
+                  }, 3000);
+                })
+                .catch((err) => console.log(err, "err"));
+            }
+          }
+          function getRemaningTime() {
+            let userToken = localStorage.getItem('user_token')
+
+            fetch('https://car-parked-app.herokuapp.com/api/location/get', {
+              method: 'get',
+              mode: 'cors',
+              cache: 'no-cache',
+              credentials: 'same-origin',
+              headers: {
+                'Content-Type': 'application/json',
+                token: userToken
+              },
+            }).then(res => res.json().then(ress => {
+              let date = new Date(ress.milliseconds).toISOString()
+              if (ress.milliseconds == 600000) {
+                document.getElementById("alert").style.display = "block";
+                document.getElementById("alert").innerHTML = ` You should head back to your car in ${res.milliseconds}in order to avoid any fines given by fines Victoria to avoid any delays.;`
+                document.getElementById("alert").innerHTML = "You should head back to your car in [remaining time for the time stamp where location was saved] in order to avoid any fines given by fines Victoria to avoid any delays.";
+                setTimeout(() => {
+                  document.getElementById("alert").style.display = "none";
+                }, 3000);
+              }
+            }))
+          }
+        </script>
+
+      </div>
+      <div class="card-rows card-rowww">
+        <div id="alert" class="alert alert-success alert-dismissible" style="width:22.2rem !important; display:none">
+          <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+          <strong>Success!</strong>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div> -->
+    <footer style="
+          background-color: #171835;
+          /* position: absolute;
+          bottom: 0; */
+          width: 100%;
+        ">
+      <div class="container">
+        <div class="footer-content">
+
+          <!-- <div>
+              <p style="color: #fff">who are we?</p>
+              <p style="color: #fff">Terms and conditions of service</p>
+            </div>
+            <div>
+              <p style="color: #fff">Contact</p>
+              <p style="color: #fff">Privacy Policy</p>
+            </div>
+            <div>
+              <p style="color: #fff">Collaborate with us</p>
+              <p style="color: #fff">Cancellation Conditions</p>
+            </div>
+            <div>
+              <p style="color: #fff">Parking in Europe</p>
+              <p style="color: #fff">Cookie Policy</p>
+            </div> -->
+        </div>
+      </div>
+    </footer>
+    <!-- </div> -->
+  </div>
+
+
+</body>
+
+</html>

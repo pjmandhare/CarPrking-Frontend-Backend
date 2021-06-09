@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../bootstrap/bootstrap.min.css" rel="stylesheet" />
+  <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/floating-labels/" />
+  <link href="./style.css" rel="stylesheet" />
+
+  <title>Time Screen</title>
+  <script>
+    function handleLogout() {
+      localStorage.clear()
+    }
+  </script>
+</head>
+
+<body>
+  <header>
+    <div class="container-fluid">
+      <nav class="navbar navbar-expand-lg navbar-light" style="margin: 0 100px">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+          aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <!-- <a class="navbar-brand" href="#">
+          <img src="assets/app-logo.svg" width="100%" height="100%" />
+        </a> -->
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+          <ul class="navbar-nav mt-2 mt-lg-0" style="width: 100%; justify-content: flex-end">
+            <li class="nav-item">
+              <a href="../Home/index.html" class="nav-link">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Contact</a>
+            </li>
+          </ul>
+          <ul class="navbar-nav mt-2 mt-lg-0 ml-1">
+            <li class="nav-item">
+              <a href="../Login/login.html"><button onclick="handleLogout()" class="signup-btn">Logout</button></a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div id="login">
+    <!-- <h3 class="text-center text-white pt-5">Login form</h3> -->
+    <div class="container">
+      <div id="login-row" class="row justify-content-center align-items-center">
+        <div class="col-md-12">
+          <div id="login-box" class="col-md-12">
+            <form id="login-form" class="form" action="" method="post">
+              <h2 class="text" style="text-align: center">
+                Find my Parked Car
+              </h2>
+              <h3 class="text" style="text-align: center; margin-bottom: 30px">
+                Parking Slots
+              </h3>
+
+              <div style="text-align: center">
+                <iframe src="https://www.google.com/maps/d/embed?mid=1o6x6n5liQ_m9BdkRKUwwxw9rrAFW7cTZ" width="1000px"
+                  height="500px" frameborder="0" allowfullscreen="false" aria-hidden="false" tabindex="0"></iframe>
+                      
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <div> -->
+    <footer style="
+          background-color: #171835;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+        ">
+      <div class="container">
+        <div class="footer-content">
+
+        </div>
+      </div>
+    </footer>
+    <!-- </div> -->
+  </div>
+
+</body>
+
+</html>

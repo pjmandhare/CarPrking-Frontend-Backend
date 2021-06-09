@@ -1,0 +1,97 @@
+.car-slots {
+    background: #fff;
+    border: 1px solid #c0c8eb;
+    border-radius: 8px;
+    box-shadow: 0 3px 0 rgb(192 200 235 / 60%);
+    padding: 0;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 25px !important;
+    position: relative;
+    text-align: center;
+}
+
+.card-body {
+    padding: 1.25rem 1.25rem 0 1.25rem !important;
+    margin-bottom: 20px;
+}
+
+.sendBtn {
+    color: #fff;
+    width: 60%;
+    height: 35px;
+    border-radius: 6px;
+    line-height: 0.5;
+    background-color: #f45400;
+    border-color: #f45400;
+    position: relative;
+    font-size: 14px;
+    cursor: pointer;
+    margin: -10px auto
+}
+
+.sendBtn:hover {
+    box-shadow: 0 3px 0 #fff;
+    background-color: #f45400;
+    border-color: #f45400;
+    transition: .15s ease-in-out;
+}
+
+.card-rowww {
+    padding: 30px 0;
+    margin: 10px;
+    width: 20%
+}
+
+.signup-btn {
+    height: 50px;
+    background: #fff;
+    color: #f45400;
+    border: 1px solid #c0c8eb;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 3px 0 rgb(192 200 235 / 60%);
+    padding: .5rem 1.25rem;
+    min-width: 160px;
+    cursor: pointer;
+    outline: none;
+}
+
+.signup-btn:hover {
+    background-color: #f45400;
+    box-shadow: 0 3px 0 #fff;
+    border-color: #f45400;
+    color: #fff;
+    transition: background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+}
+
+@media only screen and (max-width: 960px) {
+    .card-rowww {
+        width: 35%
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card-rowww {
+        width: 40%
+    }
+}
+
+/*
+@media only screen and (max-width: 960px) {
+    .card-deck {
+        flex-direction: column;
+    }
+    .car-slots {
+        margin-top: 20px;
+    }
+} */
+
+.footer-content {
+    /* display: flex;
+    justify-content: space-around; */
+    padding: 20px 0;
+}

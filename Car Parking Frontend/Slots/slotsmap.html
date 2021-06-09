@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <style>
+    .alert {
+      padding: 20px;
+      background-color: #f44336;
+      color: white;
+    }
+
+    .closebtn {
+      margin-left: 15px;
+      color: white;
+      font-weight: bold;
+      float: right;
+      font-size: 22px;
+      line-height: 20px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .closebtn:hover {
+      color: black;
+    }
+  </style>
+  <script type="text/javascript">
+
+  
+    window.onunload = function () { null };
+  </script>
+  <script type="text/javascript">
+    // show user current location
+    function showLocation(position) {
+      callApi(position);
+    }
+    function errorHandler(err) {
+      if (err.code == 1) {
+        alert("Error: Access is denied!");
+      } else if (err.code == 2) {
+        alert("Error: Position is unavailable!");
+      }
+    }
+    function callApi(location) {
+      // function for get user current location 
+      let resasdasd = document.getElementById("mapholder");
+      var hours = document.getElementById("hours").value;
+      var minutes = document.getElementById("minutes").value;
+      if (minutes > 59) {
+        alert("minutes must be less than 60");
+      }
+      if (minutes <= 10) {
+        alert("minutes must be greater than 10");
+      } else {
+        let params = {
+          duration: `${hours}:${minutes}`,
+          latitude: location.coords.latitude,
+          longitude: location.coords.longitude,
+        };
+        fetch("https://car-parked-app.herokuapp.com/api/location/create", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            token:
+              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InpvaGFpYi5hbHZpMTJAZ21haWwuY29tIiwidXNlcklkIjoiNjA4MzE2YjM4YzE5OGMxODIwZTA1M2VjIiwiaWF0IjoxNjE5MjMyMjExLCJleHAiOjE2MTk0MDUwMTF9.3WAKivXTSmbDeIjbG9BkBaFWeaTS94je8smd5s4Q5hM",
+          },
+          body: JSON.stringify(params),
+        })
+          .then((res) => {
+            document.getElementById("hours").value = '';
+            document.getElementById("minutes").value = '';
+            document.getElementById("alert").style.display = "block";
+            document.getElementById("alert").innerHTML = "Time and Location added Succesfully";
+            setTimeout(() => {
+              document.getElementById("alert").style.display = "none";
+            }, 3000);
+          })
+          .catch((err) => console.log(err, "err"));
+      }
+    }
+    // function for get user current location 
+    function getLocation() {
+      if (navigator.geolocation) {
+        // timeout at 60000 milliseconds (60 seconds)
+        var options = { timeout: 60000 };
+        navigator.geolocation.getCurrentPosition(
+          showLocation,
+          errorHandler,
+          options
+        );
+      } else {
+        alert("Sorry, browser does not support geolocation!");
+      }
+    }
+    // api for get remainging time
+    function getRemaningTime() {
+      fetch('https://car-parked-app.herokuapp.com/api/location/get', {
+        method: 'get',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+          token:
+            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InpvaGFpYi5hbHZpMTJAZ21haWwuY29tIiwidXNlcklkIjoiNjA4MzE2YjM4YzE5OGMxODIwZTA1M2VjIiwiaWF0IjoxNjE5MjMyMjExLCJleHAiOjE2MTk0MDUwMTF9.3WAKivXTSmbDeIjbG9BkBaFWeaTS94je8smd5s4Q5hM",
+        },
+      }).then(res => res.json().then(ress => {
+        let date = new Date(ress.milliseconds).toISOString()
+        if (ress.milliseconds == 600000) {
+          document.getElementById("alert").style.display = "block";
+          document.getElementById("alert").innerHTML = "You should head back to your car in [remaining time for the time stamp where location was saved] in order to avoid any fines given by fines Victoria to avoid any delays.";
+          setTimeout(() => {
+            document.getElementById("alert").style.display = "none";
+          }, 3000);
+        } else if (ress.milliseconds == 0) {
+          document.getElementById("alert").style.display = "block";
+          document.getElementById("alert").innerHTML = "Your Time hasbeen Up!!!";
+          setTimeout(() => {
+            document.getElementById("alert").style.display = "none";
+          }, 3000);
+        }
+      })
+      ).catch(err => console.log(err, 'err'))
+    }
+    getRemaningTime()
+    setInterval(function () {
+      getRemaningTime()
+    }, 200000);
+  </script>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Car Parking</title>
+  <link href="../assets/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../assets/css/style.css" rel="stylesheet" />
+  <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css" rel="stylesheet" />
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js"></script>
+  <style>
+    #map {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      height: 150%;
+      float: right;
+      margin-top: 25px;
+      margin-bottom: 25px;
+    }
+
+    @media screen and (max-width: 960px) {
+      #map {
+        width: 90%;
+        height: 60%;
+        margin-top: 15px;
+        margin-left: 0px;
+
+      }
+
+
+      .parked {
+        margin-top: -70%
+      }
+    }
+
+    .marker {
+      background-image: url("./map.png");
+      background-size: cover;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  </style>
+
+<body style="background-image: url(../assets/images/background1.jpg);
+  background-size: cover;">
+  <div style=" background-color: #ffffff29;
+  opacity: 1;  ">
+    <article class="card-body" style="height: 100%">
+      <div class="container">
+        <div class="row custom-row">
+          <div class="col-xs-6 my-form">
+
+            <div class="control-group" style="margin-top: 30px">
+              <div class="btn-container">
+              </div>
+            </div>
+            <div class="col-xs-6">
+              <h2>Slecet location from map</h2>
+              <div style="width: 100%">
+                <div id="googleMap" style="width:100%; height:800px;"></div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- </div> -->
+    </article>
+  </div>
+  <script>
+
+
+    var googleApikey = "AIzaSyDQbgehKQT1hI4rGR_atZxF7bHyYiFBdVo"
+    function myMap() {
+
+      var location = { lat: -37.84495677650874, lng: 144.11061127116415 }
+      var location1 = { lat: -33.84495677650874, lng: 145.11251127116415 }
+      var location2 = { lat: -36.84495677650874, lng: 144.11271161250415 }
+      var location3 = { lat: -32.84495677650874, lng: 147.158161127116415 }
+      var location4 = { lat: -31.84495677650874, lng: 145.11061127116415 }
+
+      var mapProp = {
+        center: location,
+        zoom: 4,
+      };
+      var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+      var marker = new google.maps.Marker({ position: location, map: map, label: 'C1' });
+      var marker1 = new google.maps.Marker({ position: location1, map: map, label: 'C2' });
+      var marker2 = new google.maps.Marker({ position: location2, map: map, label: 'C3' });
+      var marker3 = new google.maps.Marker({ position: location3, map: map, label: 'C4' });
+      var marker4 = new google.maps.Marker({ position: location4, map: map, label: 'C7' });
+      marker.setMap(map);
+      marker1.setMap(map);
+      marker2.setMap(map);
+      marker3.setMap(map);
+      marker4.setMap(map);
+      google.maps.event.addListener(marker, 'click', function () {
+       window.location='./index.html'
+       localStorage.setItem('latLong',JSON.stringify(location))
+      });
+      google.maps.event.addListener(marker1, 'click', function () {
+       window.location='./index.html'
+       localStorage.setItem('latLong',JSON.stringify(location1))
+
+      });
+      google.maps.event.addListener(marker2, 'click', function () {
+       window.location='./index.html'
+       localStorage.setItem('latLong',JSON.stringify(location2))
+
+      });
+      google.maps.event.addListener(marker3, 'click', function () {
+       window.location='./index.html'
+       localStorage.setItem('latLong',JSON.stringify(location3))
+
+      });
+      google.maps.event.addListener(marker4, 'click', function () {
+       window.location='./index.html'
+       localStorage.setItem('latLong',JSON.stringify(location4))
+
+      });
+   
+    }
+  </script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDQbgehKQT1hI4rGR_atZxF7bHyYiFBdVo&callback=myMap"></script>
+</body>
+
+</html>
