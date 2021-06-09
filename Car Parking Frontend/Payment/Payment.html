@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../bootstrap/bootstrap.min.css" rel="stylesheet" />
+    <link
+      rel="canonical"
+      href="https://getbootstrap.com/docs/4.0/examples/floating-labels/"
+    />
+    <link href="./style.css" rel="stylesheet" />
+
+    <title>Login</title>
+  </head>
+  <body>
+    <header>
+      <div class="container-fluid">
+        <nav
+          class="navbar navbar-expand-lg navbar-light"
+          style="margin: 0 100px"
+        >
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="#">
+            <img src="assets/app-logo.svg" width="100%" height="100%" />
+          </a> -->
+
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul
+              class="navbar-nav mt-2 mt-lg-0"
+              style="width: 100%; justify-content: flex-end"
+            >
+              <li class="nav-item">
+                <a class="nav-link" href="../Home/index.html"
+                  >Home <span class="sr-only">(current)</span></a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../About/About.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../Contact/contact.html">Contact</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav mt-2 mt-lg-0 ml-1">
+              <li class="nav-item">
+                <a href="../Login/login.html"
+                  ><button class="signup-btn">Logout</button></a
+                >
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <div id="login">
+      <!-- <h3 class="text-center text-white pt-5">Login form</h3> -->
+      <div class="container">
+        <div
+          id="login-row"
+          class="row justify-content-center align-items-center"
+        >
+          <div id="login-column" class="col-md-6">
+            <div class="col-md-12">
+              <form id="login-form" class="form" action="" method="post">
+                <h3 class="text" style="margin-bottom: 20px">Payment!</h3>
+                <!-- <p class="enterEmail">
+                  Enter your details to create an account.
+                </p> -->
+                <div class="form-inputs">
+                  <div class="form-label-group inputssssss">
+                    <input
+                      type="text"
+                      id="firstName"
+                      name="firstName"
+                      class="form-control"
+                      placeholder="First Name"
+                      required
+                      autofocus
+                    />
+                    <label for="firstName">First Name</label>
+                  </div>
+                  <div class="form-label-group inputssssss">
+                    <input
+                      type="text"
+                      id="lastName"
+                      name="lastName"
+                      class="form-control"
+                      placeholder="Last Name"
+                      required
+                    />
+                    <label for="lastName">Last Name</label>
+                  </div>
+                </div>
+                <div class="form-label-group">
+                  <textarea
+                    type="text"
+                    id="billingAddress"
+                    name="billingAddress"
+                    class="form-control"
+                    placeholder="Billing Address"
+                    required
+                  ></textarea>
+                </div>
+                <div class="form-inputs">
+                  <div class="form-label-group inputssssss">
+                    <input
+                      type="cardNumber"
+                      id="cardNumber"
+                      name="text"
+                      class="form-control"
+                      placeholder="Card Number"
+                      required
+                    />
+                    <label for="cardNumber">Card Number</label>
+                  </div>
+                  <div class="form-label-group inputssssss">
+                    <input
+                      type="text"
+                      id="expiry"
+                      name="expiry"
+                      class="form-control"
+                      placeholder="Expiry"
+                      required
+                    />
+                    <label for="expiry">Expiry</label>
+                  </div>
+                </div>
+                <div class="form-label-group">
+                  <input
+                    type="text"
+                    id="cvv"
+                    name="cvv"
+                    class="form-control"
+                    placeholder="Phone Number"
+                    required
+                  />
+                  <label for="cvv">CVV</label>
+                </div>
+
+                <div class="form-label-group">
+                  <button
+                    type="button"
+                    class="sendBtn btn-block"
+                    style="width: 50%; margin: 0 auto"
+                  >
+                    Send
+                  </button>
+                </div>
+                <div class="linear-circle">
+                  <span class="lines"></span>
+                  <span class="circle"></span>
+                  <span class="lines"></span>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div> -->
+      <footer
+        style="
+          background-color: #171835;
+          width: 100%;
+          position: absolute;
+          bottom: 0;
+        "
+      >
+        <div class="container">
+          <div class="footer-content">
+            <!-- <div>
+        <p style="color: #fff">who are we?</p>
+        <p style="color: #fff">Terms and conditions of service</p>
+      </div>
+      <div>
+        <p style="color: #fff">Contact</p>
+        <p style="color: #fff">Privacy Policy</p>
+      </div>
+      <div>
+        <p style="color: #fff">Collaborate with us</p>
+        <p style="color: #fff">Cancellation Conditions</p>
+      </div>
+      <div>
+        <p style="color: #fff">Parking in Europe</p>
+        <p style="color: #fff">Cookie Policy</p>
+      </div> -->
+          </div>
+        </div>
+      </footer>
+      <!-- </div> -->
+    </div>
+
+  </body>
+</html>
