@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="../bootstrap/bootstrap.css" rel="stylesheet" />
+  <link href="./style.css" rel="stylesheet" />
+
+  <title>Home</title>
+  <script>
+      function handleLogout() {
+        localStorage.clear()
+  }
+  </script>
+</head>
+
+<body>
+  <div id="App">
+    <header>
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg navbar-light" style="margin: 0 100px">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+            aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <!-- <a class="navbar-brand" href="#">
+              <img src="assets/app-logo.svg" width="100%" height="100%" />
+            </a> -->
+
+          <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mt-2 mt-lg-0" style="width: 100%; justify-content: flex-end">
+              <!-- <li class="nav-item active">
+                  <a class="nav-link"
+                    >Home <span class="sr-only">(current)</span></a
+                  >
+                </li> -->
+              <li class="nav-item">
+                <a class="nav-link" href="../About/About.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../Payment/Payment.html">Payment</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="../Contact/contact.html">Contact</a>
+              </li>
+            </ul>
+            <ul class="navbar-nav mt-2 mt-lg-0 ml-1">
+              <li class="nav-item">
+                <a href="../Login/login.html"><button class="signup-btn" onclick="handleLogout()">Logout</button></a>
+              </li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <section>
+      <div id="login">
+        <!-- <h3 class="text-center text-white pt-5">Login form</h3> -->
+        <div class="container">
+          <div id="login-row" class="row justify-content-center align-items-center">
+            <div id="login-column" class="col-md-6">
+              <div id="login-box" class="col-md-12">
+                <form id="login-form" class="form" action="" method="post">
+                  <h2 class="text" style="text-align: center; margin-bottom: 30px">
+                    Find my Parked Car
+                  </h2>
+                  <h3 class="text" style="text-align: center; margin-bottom: 30px">
+                    Welcome User!
+                  </h3>
+
+                  <div class="form-label-group" style="width: 100%; text-align: center">
+                    <a href="../Slots/slotsmap.html" style="text-decoration: none">
+                      <button type="button" class="sendBtn btn-block" style="
+                            width: 50%;
+                            height: 120px;
+                            margin: 0 auto;
+                            box-shadow: 0 3px 0 rgb(192 200 235 / 60%);
+                          ">
+                        Save my Locations
+                      </button>
+                    </a>
+                  </div>
+                  <div class="form-label-group" style="width: 100%; text-align: center">
+                    <a href="../HeadToParking/index.html" style="text-decoration: none">
+                      <button type="button" class="sendBtn btn-block" style="
+                            width: 50%;
+                            height: 120px;
+                            margin: 0 auto;
+                            box-shadow: 0 3px 0 rgb(192 200 235 / 60%);
+                          ">
+                        Head to Parking
+                      </button>
+                    </a>
+                  </div>
+                  <div class="form-label-group" style="width: 100%; text-align: center">
+                    <a href="../TimeScreen/ParkingSlots.html" style="text-decoration: none">
+                      <button type="button" class="sendBtn btn-block" style="
+                            width: 50%;
+                            height: 120px;
+                            margin: 0 auto;
+                            box-shadow: 0 3px 0 rgb(192 200 235 / 60%);
+                          ">
+                        Available Slots
+                      </button>
+                    </a>
+                  </div>
+
+                  <div class="linear-circle">
+                    <span class="lines"></span>
+                    <span class="circle"></span>
+                    <span class="lines"></span>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <div> -->
+    <footer style="
+          background-color: #171835;
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+        ">
+      <div class="container">
+        <div class="footer-content">
+          <!-- <div>
+              <p style="color: #fff">who are we?</p>
+              <p style="color: #fff">Terms and conditions of service</p>
+            </div>
+            <div>
+              <p style="color: #fff">Contact</p>
+              <p style="color: #fff">Privacy Policy</p>
+            </div>
+            <div>
+              <p style="color: #fff">Collaborate with us</p>
+              <p style="color: #fff">Cancellation Conditions</p>
+            </div>
+            <div>
+              <p style="color: #fff">Parking in Europe</p>
+              <p style="color: #fff">Cookie Policy</p>
+            </div> -->
+        </div>
+      </div>
+    </footer>
+    <!-- </div> -->
+  </div>
+</body>
+
+</html>
