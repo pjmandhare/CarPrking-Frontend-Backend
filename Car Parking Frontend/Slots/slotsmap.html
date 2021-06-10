@@ -187,7 +187,7 @@
               </div>
             </div>
             <div class="col-xs-6">
-              <h2>Slecet location from map</h2>
+              <h2>Select location from map</h2>
               <div style="width: 100%">
                 <div id="googleMap" style="width:100%; height:800px;"></div>
 
@@ -204,27 +204,35 @@
     var googleApikey = "AIzaSyDQbgehKQT1hI4rGR_atZxF7bHyYiFBdVo"
     function myMap() {
 
-      var location = { lat: -37.84495677650874, lng: 144.11061127116415 }
-      var location1 = { lat: -33.84495677650874, lng: 145.11251127116415 }
-      var location2 = { lat: -36.84495677650874, lng: 144.11271161250415 }
-      var location3 = { lat: -32.84495677650874, lng: 147.158161127116415 }
-      var location4 = { lat: -31.84495677650874, lng: 145.11061127116415 }
-
+      var location = { lat: -37.84922, lng: 145.11346 }
+      var location1 = { lat: -37.84941, lng: 145.1159 }
+      var location2 = { lat: -37.84908, lng: 145.1158 }
+      var location3 = { lat: -37.84868, lng: 145.11618 }
+      var location4 = { lat: -37.84845,  lng:145.11594 }
+      var location5 = { lat:-37.8458,  lng:145.1145 }
+      var location6 = { lat:-37.8466,  lng:145.11562 }
+      var location7 = { lat:-37.84689, lng: 145.11571 }
       var mapProp = {
         center: location,
-        zoom: 4,
+        zoom: 17,
       };
       var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
       var marker = new google.maps.Marker({ position: location, map: map, label: 'C1' });
-      var marker1 = new google.maps.Marker({ position: location1, map: map, label: 'C2' });
+      var marker1 = new google.maps.Marker({ position: location1, map: map, label: 'C8' });
       var marker2 = new google.maps.Marker({ position: location2, map: map, label: 'C3' });
       var marker3 = new google.maps.Marker({ position: location3, map: map, label: 'C4' });
-      var marker4 = new google.maps.Marker({ position: location4, map: map, label: 'C7' });
+      var marker4 = new google.maps.Marker({ position: location4, map: map, label: 'C2' });
+      var marker5 = new google.maps.Marker({ position: location5, map: map, label: 'C6' });
+      var marker6 = new google.maps.Marker({ position: location6, map: map, label: 'C7A' });
+      var marker7 = new google.maps.Marker({ position: location7, map: map, label: 'C7B' });
       marker.setMap(map);
       marker1.setMap(map);
       marker2.setMap(map);
       marker3.setMap(map);
       marker4.setMap(map);
+      marker5.setMap(map);
+      marker6.setMap(map);
+      marker7.setMap(map);
       google.maps.event.addListener(marker, 'click', function () {
        window.location='./index.html'
        localStorage.setItem('latLong',JSON.stringify(location))
@@ -247,6 +255,21 @@
       google.maps.event.addListener(marker4, 'click', function () {
        window.location='./index.html'
        localStorage.setItem('latLong',JSON.stringify(location4))
+
+      });
+      google.maps.event.addListener(marker4, 'click', function () {
+       window.location='./index.html'
+       localStorage.setItem('latLong',JSON.stringify(location5))
+
+      });
+      google.maps.event.addListener(marker4, 'click', function () {
+       window.location='./index.html'
+       localStorage.setItem('latLong',JSON.stringify(location6))
+
+      });
+      google.maps.event.addListener(marker4, 'click', function () {
+       window.location='./index.html'
+       localStorage.setItem('latLong',JSON.stringify(location7))
 
       });
    
