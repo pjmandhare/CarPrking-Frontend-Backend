@@ -14,7 +14,12 @@
     function handleLogout() {
       localStorage.clear()
     }
-  </script>
+
+      function myFunction() {
+        var x = document.getElementById("hrs").value;
+        document.getElementById("total_value").innerHTML = " " + x*7;
+      }
+      </script>
 </head>
 
 <body>
@@ -65,17 +70,29 @@
                 How much time will you stay?
               </h3>
               <div class="form-label-group">
-                <input type="text" id="hrs" class="form-control" placeholder="Hours" required autofocus />
+                <input type="text" id="hrs" class="form-control" value="0" onchange="myFunction()" placeholder="Hours" required autofocus />
                 <label for="inputEmail">Hours</label>
               </div>
               <div class="form-label-group">
-                <input type="text" id="mins" class="form-control" placeholder="Minutes" required />
-                <label for="inputPassword">Minutes</label>
+                <input type="date" id="date" class="form-control" placeholder="date" required autofocus />
+                <label for="inputEmail">Date</label>
               </div>
+              <div class="col">
+                <div class="row my-4">
+                    <div class="col-9 text-right total">
+                     Total
+                    </div>
+                    
+                    <div class="col-2 total-val">
+                      <span id="total_value"></span>
+                    </div>
+                  </div>
+                <br />
+            </div>
               <div class="form-label-group" style="box-shadow: 0 3px 0 rgb(192 200 235 / 60%)">
-                <a href="../Home/index.html">
+                <a href="../Payment/Payment.html">
                   <button type="button" class="sendBtn btn-block">
-                    Submit
+                    Confirm and Pay
                   </button>
                 </a>
               </div>
@@ -100,22 +117,7 @@
         ">
       <div class="container">
         <div class="footer-content">
-          <!-- <div>
-              <p style="color: #fff">who are we?</p>
-              <p style="color: #fff">Terms and conditions of service</p>
-            </div>
-            <div>
-              <p style="color: #fff">Contact</p>
-              <p style="color: #fff">Privacy Policy</p>
-            </div>
-            <div>
-              <p style="color: #fff">Collaborate with us</p>
-              <p style="color: #fff">Cancellation Conditions</p>
-            </div>
-            <div>
-              <p style="color: #fff">Parking in Europe</p>
-              <p style="color: #fff">Cookie Policy</p>
-            </div> -->
+         
         </div>
       </div>
     </footer>
